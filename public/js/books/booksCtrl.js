@@ -3,4 +3,9 @@ angular.module("myBookshelf").controller("booksCtrl", function($scope, booksServ
 	booksService.returnBooks().then(function(data) {
 		$scope.books = data.data;
 	});
+
+	// Variables used for sorting
+	$scope.predicate = "";
+	$scope.reverse = false;
+
 })

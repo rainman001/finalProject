@@ -1,7 +1,42 @@
-<div ng-controller="booksCtrl" class="container allContent">
-	<table ng-repeat="book in books"> 
-		<tr>
-			<td>{{book}}</td>
+<div ng-controller="booksCtrl" class="allContent">
+	<div>
+	    <nav id="myNavbar" class="navbar navbar-default" role="navigation">
+	        <!-- Brand and toggle get grouped for better mobile display -->
+	        <div class="container">
+	            <div class="navbar-header">
+	                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigationCollapse">
+	                    <span class="sr-only">Toggle navigation</span>
+	                    <span class="icon-bar"></span>
+	                    <span class="icon-bar"></span>
+	                    <span class="icon-bar"></span>
+	                </button>
+	                <a class="navbar-brand" href="/">Home</a>
+	            </div>
+	            <!-- Collect the nav links, forms, and other content for toggling -->
+	            <div class="collapse navbar-collapse" id="navigationCollapse">
+	                <ul class="nav navbar-nav">
+	                    <li class="dropdown">
+	                    	<a href="" data-toggle="dropdown" class="dropdown-toggle">Sort By<b class="caret"></b></a>
+	                    	<ul class="dropdown-menu">
+	                    	    <li><a href="" ng-click="predicate = 'title'; reverse=!reverse">Title</a></li>
+	                    	    <li><a href="" ng-click="predicate = 'author'; reverse=!reverse">Author</a></li>
+	                    	    <li><a href="" ng-click="predicate = 'date_published'; reverse=!reverse">Date Published</a></li>
+	                    	    <li><a href="" ng-click="predicate = 'date_acquired'; reverse=!reverse">Date Acquired</a></li>
+	                    	    <li><a href="" ng-click="predicate = 'was_read'; reverse=!reverse">Has Been Read</a></li>
+	                    	    <li><a href="" ng-click="predicate = 'rating'; reverse=!reverse">Rating</a></li>
+	                    	    <li><a href="" ng-click="predicate = ''">None</a></li>
+	                    	</ul>
+	                    </li>
+	                    <li><a href="/#/books/add-book">Add New Book</a></li>
+
+	                </ul>
+	            </div><!-- /.navbar-collapse -->
+	        </div>
+	    </nav>
+	</div>
+	<table class="customTable"> 
+		<tr ng-repeat="book in books | orderBy:predicate:reverse" >
+			<td class="customCell">Title: {{book.title}} By: {{book.author}} ISBN: {{book.ISBN}} Rating: {{book.rating}}</td>
 		</tr>
 	</table>
 </div>

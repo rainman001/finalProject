@@ -68,3 +68,13 @@ html, body {
 	background-color: #858585;
 	padding: 0.75em;
 }
+
+/* For the results table */
+.customTable {
+	width: 100%;
+}
+
+.customCell {
+	border: 1px solid #858585;
+	padding: 1em;
+}
