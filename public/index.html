@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>My Bookshelf</title>
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" href="vendor/bootstrap-3.2.0-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="vendor/bootstrap-3.2.0-dist/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="css/desktopStyle.css" />
+	<link rel="stylesheet" media="only screen and (max-width: 760px)"href="css/mediumDeviceStyle.css" />
+	<link rel="stylesheet" media="only screen and (max-width: 480px)" href="css/smallDeviceStyle.css" />
+</head>
+
+<body ng-app="myBookshelf">
+	<div class="allContent">
+		<div class="mainHeader">
+			<div class="headerLeft">
+				MY BOOKSHELF
+			</div>
+			<div class="headerRight">
+				<p id="headerRightText">SEARCH</p>
+				<input type="text" class="searchInput"/>
+			</div>
+		</div>
+		<div>
+		    <nav id="myNavbar" class="navbar navbar-default" role="navigation">
+		        <!-- Brand and toggle get grouped for better mobile display -->
+		        <div class="container">
+		            <div class="navbar-header">
+		                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigationCollapse">
+		                    <span class="sr-only">Toggle navigation</span>
+		                    <span class="icon-bar"></span>
+		                    <span class="icon-bar"></span>
+		                    <span class="icon-bar"></span>
+		                </button>
+		                <a class="navbar-brand" href="/">Home</a>
+		            </div>
+		            <!-- Collect the nav links, forms, and other content for toggling -->
+		            <div class="collapse navbar-collapse" id="navigationCollapse">
+		                <ul class="nav navbar-nav">
+		                    <li><a href="#">About</a></li>
+		                    <li class="dropdown">
+		                    	<a href="#" data-toggle="dropdown" class="dropdown-toggle">Recently Added<b class="caret"></b></a>
+		                    	<ul class="dropdown-menu">
+		                    	    <li><a href="/#/procedures/cataract-surgery">Cataract Surgery</a></li>
+		                    	    <li><a href="/#/procedures/ECP">ECP</a></li>
+		                    	    <li><a href="/#/procedures/refractive-surgery">Refractive Surgery</a></li>
+		                    	    <li><a href="/#/procedures/lasik">Lasik</a></li>
+		                    	    <li><a href="/#/procedures/glaucoma">Glaucoma</a></li>
+		                    	    <li><a href="/#/procedures/PRK">PRK</a></li>
+		                    	    <li><a href="/#/procedures/CK">CK</a></li>
+		                    	    <li><a href="/#/procedures/macular-degeneration">Macular Degeneration</a></li>
+		                    	</ul>
+		                    </li>
+		                    <li><a href="#">Contact</a></li>
+
+		                </ul>
+		            </div><!-- /.navbar-collapse -->
+		        </div>
+		    </nav>
+		</div>
+	</div>
+
+	<ng-view>
+		<!-- Angular html templates inserted here -->
+	</ng-view>
+
+	<div class=" allContent mainFooter">
+		<p>Copyright 2014 Wesley Hodges</p>
+		<a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out MyBookshelf! A new way to keep track of what books you have, when you got them, and what they are worth!">Tweet</a>
+	</div>
+
+	<script src="vendor/jquery-1.11.1.js"></script>
+	<script src="vendor/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular-route.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/home/homeCtrl.js"></script>
+    <script src="js/books/booksCtrl.js"></script>
+    <script src="js/books/booksService.js"></script>
+    <script src="js/addBook/addBookCtrl.js"></script>
+    <script src="js/addBook/addBookService.js"></script>
+    <script src="js/directives/imageDirective.js"></script>
+
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+</body>
+
+</html>

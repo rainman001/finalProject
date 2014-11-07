@@ -1,0 +1,25 @@
+{
+  "name": "finalProject",
+  "version": "1.0.0",
+  "description": "finalProject\r ============",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wrhodges1986/finalProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wrhodges1986/finalProject/issues"
+  },
+  "homepage": "https://github.com/wrhodges1986/finalProject",
+  "dependencies": {
+    "body-parser": "^1.9.1",
+    "express": "^4.10.0",
+    "fs": "0.0.2",
+    "mongoose": "^3.8.18"
+  }
+}

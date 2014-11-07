@@ -1,0 +1,70 @@
+html, body {
+	width: 100%;
+	margin: 0;
+}
+
+.allContent {
+	width: 70%;
+	margin: 0 15%;
+}
+
+.mainHeader {
+	display: flex;
+	margin-top: 1.5em;
+	margin-bottom: 1em;
+	border: 1px dashed black;
+}
+
+.headerLeft {
+	background-color: #858585;
+	width: 50%;
+	text-align: right;
+	font-size: 3em;
+	font-family: "Impact";
+}
+
+.headerRight {
+	background-color: #858585;
+	width: 50%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+#headerRightText {
+	text-align: right;
+	padding-top: 1.5em;
+	padding-left: 1.5em;
+	font-size: 1em;
+	font-family: "Helvetica";
+}
+
+.searchInput {
+	margin: 1em;
+	height: 30px;
+}
+
+.mainFooter {
+	display: flex;
+	justify-content: space-between;
+	font-size: 1em;
+	font-family: "Open-Sans";
+}
+
+.homeContent {
+	width: 100%;
+	min-height: 20em;
+	background-color: #E0EAEA;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.hoverClick {
+	cursor: pointer;
+	font-size: 2em;
+	font-family: "Open-Sans";
+	border: 1px solid clear;
+	border-radius: 0.5em;
+	background-color: #858585;
+	padding: 0.75em;
+}
