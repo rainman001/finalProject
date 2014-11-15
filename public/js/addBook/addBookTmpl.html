@@ -1,19 +1,91 @@
 <div ng-controller="addBookCtrl" class="allContent">
-	<form>
-		<h1>Fill in the Following:</h1>
-		<input type="text" ng-model="title" placeholder="title" />
-		<input type="text" ng-model="author" placeholder="author" />
-		<input type="text" ng-model="ISBN" placeholder="ISBN" />
-		<input type="number" ng-model="value" placeholder="value" />
-		<input type="date" ng-model="date_published" />
-		<input type="date" ng-model="date_acquired" />
-		<input type="text" ng-model="was_read" placeholder="was_read" />
-		<input type="number" ng-model="rating" placeholder="rating" />
-		<input type="file" accept="image/*" image="image" placeholder="img url" /><!--<img ng-src="{{image.dataURL}}" />-->
-		<input type="text" ng-model="comments" placeholder="comments" />
+	
+	<!--
+	<h1>Import Information From Amazon</h1>
+	<form class="form-inline">
+		<div class="form-group">
+			<label class="sr-only" for="importTitle">Title</label>
+			<input type="text" class="form-control" id="importTitle" placeholder="Title">
+		</div>
+		<div class="form-group">
+			<label class="sr-only" for="importAuthor">Author</label>
+			<input type="text" class="form-control" id="importAuthor" placeholder="Author">
+		</div>
+		<button type="submit" class="btn btn-primary">Import...</button>
 	</form>
 
-	<button ng-click="addNewBook()">
-		Submit
-	</button>
+	<h4>- or -</h4>
+	-->
+
+	<!-- HTML for the form to add new book data -->
+	<h1>Fill in the Following:</h1>
+	<div class="addBookForm">
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label for="inputTitle" class="control-label col-xs-2">Title</label>
+				<div class="col-xs-10">
+					<input type="text" ng-model="title" placeholder="title" class="form-control" id="inputTitle"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputAuthor" class="control-label col-xs-2">Author</label>
+				<div class="col-xs-10">
+					<input type="text" ng-model="author" placeholder="author" class="form-control" id="inputAuthor"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputISBN" class="control-label col-xs-2">ISBN</label>
+				<div class="col-xs-10">
+					<input type="text" ng-model="ISBN" placeholder="ISBN" class="form-control" id="inputISBN"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputValue" class="control-label col-xs-2">Value</label>
+				<div class="col-xs-10">
+					<input type="number" ng-model="value" placeholder="value" class="form-control" id="inputValue"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputDatePublished" class="control-label col-xs-2">Published</label>
+				<div class="col-xs-10">
+					<input type="date" ng-model="date_published" class="form-control" id="inputDatePublished"/>
+				</div>
+			</div>	
+			<div class="form-group">
+				<label for="inputDateAcquired" class="control-label col-xs-2">Acquired</label>
+				<div class="col-xs-10">
+					<input type="date" ng-model="date_acquired" class="form-control" id="inputDateAcquired"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputWasRead" class="control-label col-xs-2">Read</label>
+				<div class="col-xs-10">
+					<input type="text" ng-model="was_read" placeholder="was_read" class="form-control" id="inputWasRead"/>
+				</div>
+			</div>		
+			<div class="form-group">
+				<label for="inputRating" class="control-label col-xs-2">Rating</label>
+				<div class="col-xs-10">
+					<input type="number" ng-model="rating" placeholder="rating" class="form-control" id="inputRating"/>
+				</div>
+			</div>		
+			<div class="form-group">
+				<label for="inputImage" class="control-label col-xs-2">Image</label>
+				<div class="col-xs-10">
+					<input type="file" accept="image/*" image="image" placeholder="img url" class="form-control" id="inputImage"/><!--<img ng-src="{{image.dataURL}}" />-->
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputComments" class="control-label col-xs-2">Comments</label>
+				<div class="col-xs-10">
+					<input type="text" ng-model="comments" placeholder="comments" class="form-control" id="inputComments"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-xs-offset-2 col-xs-10">
+					<button type="submit" class="btn btn-primary" ng-click="addNewBook()">Submit</button>
+				</div>
+			</div>						
+		</form>
+	</div>
 </div>

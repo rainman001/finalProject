@@ -34,9 +34,38 @@
 	        </div>
 	    </nav>
 	</div>
+	<div class="input-group">
+	    <input type="text" placeholder="Search For..." class="form-control" ng-model="searchText">
+	    <span class="input-group-btn">
+	    		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Filter On <span class="caret"></span></button>
+	    		    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+	    		        <li><a href="" ng-click="filterText = ''">All</a></li>
+	    		        <li><a href="" ng-click="">Title</a></li>
+	    		        <li><a href="" ng-click="filterAuthor()">Author</a></li>
+	    		        <li><a href="" ng-click="filterRead()">Read</a></li>
+	    		        <li><a href="" ng-click="filterRating()">Rating</a></li>
+	    		        <li class="divider"></li>
+	    		        <li><a href="" ng-click="clearFilter()">Clear Filter</a></li>
+	    	        </ul>
+	    	<button class="btn btn-default" type="button" ng-click="predicate = ''">Clear Sort</button>
+	    </span>
+	</div>
 	<table class="customTable"> 
-		<tr ng-repeat="book in books | orderBy:predicate:reverse" >
-			<td class="customCell">Title: {{book.title}} By: {{book.author}} ISBN: {{book.ISBN}} Rating: {{book.rating}}</td>
+		<tr>
+			<th class="showUnderline"><a href="" ng-click="predicate = 'title'; reverse=!reverse">Title</a></th>
+			<th class="showUnderline"><a href="" ng-click="predicate = 'author'; reverse=!reverse">Author</a></th>
+			<th class="showUnderline"><a href="" ng-click="predicate = 'date_published'; reverse=!reverse">Date Published</a></th>
+			<th class="showUnderline"><a href="" ng-click="predicate = 'date_acquired'; reverse=!reverse">Date Acquired</a></th>
+			<th class="showUnderline"><a href="" ng-click="predicate = 'was_read'; reverse=!reverse">Read</a></th>
+			<th class="showUnderline"><a href="" ng-click="predicate = 'Rating'; reverse=!reverse">Rating</a></th>
+		</tr>
+		<tr ng-repeat="book in books | filter: searchText | orderBy:predicate:reverse" ng-click="goToDetailView(book.ISBN)">
+			<td>{{book.title}}</td>
+			<td>{{book.author}}</td>
+			<td>{{book.date_published}}</td>
+			<td>{{book.date_acquired}}</td>
+			<td>{{book.was_read}}</td>
+			<td>{{book.rating}}</td>
 		</tr>
 	</table>
 </div>

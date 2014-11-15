@@ -48,3 +48,8 @@ html, body {
 	padding: 0.5em;
 }
 
+/* For detail view */
+.detailSummary {
+	justify-content: center;
+}
+

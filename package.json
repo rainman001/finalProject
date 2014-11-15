@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/wrhodges1986/finalProject",
   "dependencies": {
+    "aws-lib": "^0.3.0",
     "body-parser": "^1.9.1",
     "express": "^4.10.0",
     "fs": "0.0.2",

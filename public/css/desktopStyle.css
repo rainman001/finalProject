@@ -72,9 +72,39 @@ html, body {
 /* For the results table */
 .customTable {
 	width: 100%;
+	margin-top: 1.5em;
 }
 
-.customCell {
-	border: 1px solid #858585;
-	padding: 1em;
+.showUnderline {
+	text-decoration: underline;
+}
+
+.addBookForm {
+	width: 100%;
+	background-color: #0099CC;
+	padding: 0.5em;
+}
+
+/*Styles for the detail view*/
+.detailSummary {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	border: 1px solid black;
+}
+
+.detailImage {
+	max-width: 20em;
+	max-height: 30em;
+	padding: 0.5em;
+	float: left;
+}
+
+.detailInfo {
+	margin-left: 0.5em;
+	padding: 0.5em;
+}
+
+.inputSpacing {
+	margin-left: 1.25em;
 }
