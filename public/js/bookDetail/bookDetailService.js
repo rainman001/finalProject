@@ -3,6 +3,7 @@ angular.module("myBookshelf").service("bookDetailService", function($http, $q) {
 	var baseUrl = "http://localhost:9001";
 
 	this.getSingleBook = function(bookISBN) {
+		console.log(bookISBN);
 		return $http({
 			method: "GET",
 			url: baseUrl + "/books/" + bookISBN
@@ -23,7 +24,7 @@ angular.module("myBookshelf").service("bookDetailService", function($http, $q) {
 			url: baseUrl + "/books/" + book.ISBN,
 			data: book
 		})
-	}
+	};
 
 	// Helper array and function to give a more human readable date
 	var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];

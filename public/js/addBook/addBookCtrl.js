@@ -1,5 +1,10 @@
 angular.module("myBookshelf").controller("addBookCtrl", function($scope, addBookService, $location) {
 
+	// Error handling for the date fields
+	var curDate = new Date();
+	$scope.theCurrentDate = curDate.getFullYear() + "-" + (curDate.getMonth() + 1) + "-" + curDate.getDate();
+
+	// Set up a new book object
 	function Book (title, author, ISBN, value, date_published, date_acquired, was_read, rating, img, comments) {
 
 			this.title = title;
@@ -14,6 +19,7 @@ angular.module("myBookshelf").controller("addBookCtrl", function($scope, addBook
 			this.comments = comments;
 		}
 
+	// Handles the logic of actually initializing a new Book object
 	$scope.addNewBook = function() {
 
 		var myBook = new Book($scope.title, $scope.author, $scope.ISBN, $scope.value, $scope.date_published, $scope.date_acquired, $scope.was_read, $scope.rating, $scope.image.dataURL, $scope.comments);

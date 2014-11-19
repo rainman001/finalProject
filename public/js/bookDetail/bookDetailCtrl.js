@@ -1,12 +1,15 @@
 angular.module("myBookshelf").controller("bookDetailCtrl", function($scope, $location,$routeParams, bookDetailService, bookInfo) {
 
-	// Could change to $scope.currentBook = bookInfo.data, and then
-	// update in template file, if time; same for method below
 	$scope.currentBook = bookInfo.data;
-	
+	// Could change to $scope.currentBook = bookInfo.data, and then
+	// update in template file, if time; same for method below	
 	$scope.readableDateAcquired = bookDetailService.parseDate($scope.currentBook.date_acquired);
 	$scope.readableDatePublished = bookDetailService.parseDate($scope.currentBook.date_published);
 	$scope.hasBeenRead = bookDetailService.parseWasRead($scope.currentBook.was_read);
+
+	// Error handling for the date fields
+	var curDate = new Date();
+	$scope.theCurrentDate = curDate.getFullYear() + "-" + (curDate.getMonth() + 1) + "-" + curDate.getDate();
 
 	// Variables and methods for editing control
 	$scope.editMode = false;
@@ -16,7 +19,6 @@ angular.module("myBookshelf").controller("bookDetailCtrl", function($scope, $loc
 		$scope.editMode = true;
 		$scope.staticMode = false;
 
-		// Two-way data binding
 		$scope.title = $scope.currentBook.title;
 		$scope.author = $scope.currentBook.author;
 		$scope.ISBN = $scope.currentBook.ISBN;
@@ -33,12 +35,18 @@ angular.module("myBookshelf").controller("bookDetailCtrl", function($scope, $loc
 		$scope.editMode = false;
 		$scope.staticMode = true;
 
+		$scope.currentBook.title = $scope.title;
+		$scope.currentBook.author = $scope.author;
+		// ISBN is read only
+		$scope.currentBook.value = $scope.value;
+		$scope.currentBook.was_read = $scope.read;
+		$scope.currentBook.date_acquired = $scope.date_acquired;
+		$scope.currentBook.date_published = $scope.date_published;
 		$scope.currentBook.rating = $scope.rating;
+		$scope.currentBook.comments = $scope.comments;
 
-		// It also needs to update current book with the input boxes
 		bookDetailService.updateBookInfo($scope.currentBook).then(function(response) {
 				$scope.currentBook = response.data;
-				console.log(response.data);
 		});
 	};
 

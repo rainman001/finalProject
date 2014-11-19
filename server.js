@@ -1,12 +1,9 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-//var fs = require("fs");
+var fs = require("fs");
 var mongoose = require("mongoose");
-//var aws = require("aws-lib");
 
 var app = express();
-//var prodAdv = aws.createProdAdvClient("AKIAIPJ5CZ55YXEFABPQ", "GzK5ZLFhIJR773RZxtaXzijKVyEEuYQqMEtAL6Ku");
-
 app.use(bodyParser.json({limit: 50000000}));
 // Serves up our files from public folder,
 // eliminated the need to run http-server
@@ -21,14 +18,6 @@ app.use(function(req, res, next) {
  	next();
 });
 
-// Users
-var userSchema = new mongoose.Schema({
-	username: String,
-	password: String
-});
-
-var User = mongoose.model("User", userSchema);
-
 // MongoDB and Mongoose setup
 var schema = new mongoose.Schema({
 	title: String,
@@ -39,8 +28,10 @@ var schema = new mongoose.Schema({
 	date_acquired: String, // Date
 	was_read: Boolean,
 	rating: Number,
-	img: String,
+	// Redo in postman, with the properties added, and see if it will load to the browser
+	img: String,//{data: Buffer, contentType: String},
 	comments: String
+	// current value, 
 });
 
 var Book = mongoose.model("Book", schema);
@@ -55,13 +46,6 @@ app.get("/books", function(req, res) {
 			return console.error(err);
 		}
 		res.send(books);
-
-		/*
-		var options = {SearchIndex: "Books", Keywords: "Javascript"};
-
-		prodAdv.call("ItemSearch", options, function(err, result) {
-			console.log(JSON.stringify(result));
-		});*/
 	});
 });
 
@@ -71,7 +55,7 @@ app.get("/books/:ISBN", function(req, res) {
 		if (err) {
 			return console.error(err);
 		}
-		res.send(book).status(200).end();
+		res.send(book);
 	});
 });
 
@@ -90,6 +74,9 @@ app.post("/books", function(req, res) {
 		img: req.body.img,
 		comments: req.body.comments
 	});
+
+	//newBook.img.data = fs.readFileSync(req.body.img.data);
+	//newBook.img.contentType = req.body.img.contentType;
 
 	newBook.save();
 	res.status(200).end();
@@ -115,7 +102,7 @@ app.put("/books/:ISBN", function(req, res) {
 
 		book.save();
 		res.send(book).status(200).end();
-	});
+	})
 });
 
 // Careful! This will delete anything with the included ISBN
@@ -127,6 +114,5 @@ app.delete("/books/:ISBN", function(req, res) {
 		res.status(200).end();
 	});
 });
-
 
 app.listen(9001);

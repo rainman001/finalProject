@@ -1,4 +1,4 @@
-var app = angular.module("myBookshelf", ["ngRoute", "imageupload"]);
+var app = angular.module("myBookshelf", ["ngRoute", "imageupload", "ui.bootstrap.showErrors"]);
 
 app.config(function($routeProvider) {
 
@@ -18,6 +18,7 @@ app.config(function($routeProvider) {
 			bookInfo: function(bookDetailService, $q, $route) {
 				var deferred = $q.defer();
 				bookDetailService.getSingleBook($route.current.params.ISBN).then(function(data) {
+					console.log(data);
 					deferred.resolve(data);
 				});
 
@@ -34,3 +35,7 @@ app.config(function($routeProvider) {
 	});
 
 })
+
+app.config(['showErrorsConfigProvider', function(showErrorsConfigProvider) {
+  showErrorsConfigProvider.showSuccess(true);
+}]);
