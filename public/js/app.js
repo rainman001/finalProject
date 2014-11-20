@@ -30,12 +30,12 @@ app.config(function($routeProvider) {
 		templateUrl: "js/addBook/addBookTmpl.html",
 		controller: "addBookCtrl"
 	})
+	.when("/createAccount", {
+		templateUrl: "js/users/createAccountTmpl.html",
+		controller: "createAccountCtrl"
+	})
 	.otherwise({
 		redirectTo: "/"
 	});
 
 })
-
-app.config(['showErrorsConfigProvider', function(showErrorsConfigProvider) {
-  showErrorsConfigProvider.showSuccess(true);
-}]);

@@ -1,10 +1,9 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-var fs = require("fs");
 var mongoose = require("mongoose");
 
 var app = express();
-app.use(bodyParser.json({limit: 50000000}));
+app.use(bodyParser.json({limit: 5000000}));
 // Serves up our files from public folder,
 // eliminated the need to run http-server
 app.use(express.static(__dirname + "/public"));
@@ -18,8 +17,23 @@ app.use(function(req, res, next) {
  	next();
 });
 
+var currentUserInfo = {
+	loggedIn: false,
+	username: "",
+	password: ""
+};
+
 // MongoDB and Mongoose setup
-var schema = new mongoose.Schema({
+var userSchema = new mongoose.Schema({
+	username: String,
+	password: String,
+	//newstuff
+	bookCollection: [bookSchema]
+});
+
+var User = mongoose.model("User", userSchema);
+
+var bookSchema = new mongoose.Schema({
 	title: String,
 	author: String,
 	ISBN: String,
@@ -34,11 +48,67 @@ var schema = new mongoose.Schema({
 	// current value, 
 });
 
-var Book = mongoose.model("Book", schema);
+var Book = mongoose.model("Book", bookSchema);
 
 // mongoose.connection.on("open", function() {
 	// everything would be in here
 //})
+
+//newstuff
+app.get("/accounts/checkForUser/:username", function(req, res) {
+	User.findOne({username: req.params.username}, function(err, user) {
+		// If username is not found
+		if (!user) {
+			res.send(false);
+		}
+		else {
+			// If username is found
+			res.send(true);
+		}
+	});
+});
+
+//newstuff
+// Pass in a user object rather than passing info in params
+app.get("/accounts/logInUser/:username/:password", function(req, res) {
+	User.findOne({username: req.params.username}, function(err, user) {
+
+		// Why does it come in here when you enter incorrect creds?
+		if (!user) {
+			res.send(false);
+		}
+
+		if (user.password === req.params.password) {
+			currentUserInfo.loggedIn = true;
+			currentUserInfo.username = user.username;
+			currentUserInfo.password = user.password;
+			res.send(true);
+			console.log(currentUserInfo);
+		}
+		else {
+			currentUserInfo.loggedIn = false;
+			currentUserInfo.username = "";
+			currentUserInfo.password = "";
+			res.send(false);
+		};
+	});
+});
+
+//newStuff
+app.post("/accounts/addUser", function(req, res) {
+	console.log(req.body);
+	var newUser = new User({
+		username: req.body.username,
+		password: req.body.password
+	});
+
+	newUser.save();
+	res.status(200).end();
+})
+
+
+
+
 
 app.get("/books", function(req, res) {
 	Book.find(function(err, books) {
@@ -59,8 +129,6 @@ app.get("/books/:ISBN", function(req, res) {
 	});
 });
 
-
-// Eventually, the idea is to have the user type in title, and if possible, return the rest of the info from the Amazon Products API
 app.post("/books", function(req, res) {
 	var newBook = new Book({
 		title: req.body.title,

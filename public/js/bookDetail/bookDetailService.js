@@ -3,7 +3,6 @@ angular.module("myBookshelf").service("bookDetailService", function($http, $q) {
 	var baseUrl = "http://localhost:9001";
 
 	this.getSingleBook = function(bookISBN) {
-		console.log(bookISBN);
 		return $http({
 			method: "GET",
 			url: baseUrl + "/books/" + bookISBN

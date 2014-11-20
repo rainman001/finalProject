@@ -1,8 +1,7 @@
 angular.module("myBookshelf").controller("bookDetailCtrl", function($scope, $location,$routeParams, bookDetailService, bookInfo) {
 
 	$scope.currentBook = bookInfo.data;
-	// Could change to $scope.currentBook = bookInfo.data, and then
-	// update in template file, if time; same for method below	
+
 	$scope.readableDateAcquired = bookDetailService.parseDate($scope.currentBook.date_acquired);
 	$scope.readableDatePublished = bookDetailService.parseDate($scope.currentBook.date_published);
 	$scope.hasBeenRead = bookDetailService.parseWasRead($scope.currentBook.was_read);
@@ -32,6 +31,7 @@ angular.module("myBookshelf").controller("bookDetailCtrl", function($scope, $loc
 
 	// Test here; see why first if is not working
 	$scope.enterStaticMode = function() {
+
 		$scope.editMode = false;
 		$scope.staticMode = true;
 
