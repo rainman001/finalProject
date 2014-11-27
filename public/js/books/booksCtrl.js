@@ -1,12 +1,11 @@
-angular.module("myBookshelf").controller("booksCtrl", function($scope, $location, booksService) {
+angular.module("myBookshelf").controller("booksCtrl", function($scope, $rootScope, $location, booksService) {
 
 	booksService.returnBooks().then(function(data) {
-		$scope.books = data.data;
+		$scope.books = booksService.formatDates(data.data);
 	});
 
 	$scope.goToDetailView = function(bookISBN) {
 		var url = "/books/detail/" + bookISBN;
-		console.log(url);
 		$location.path(url);
 	};
 
@@ -15,5 +14,5 @@ angular.module("myBookshelf").controller("booksCtrl", function($scope, $location
 	$scope.reverse = true;
 
 	// Filtering
-	$scope.filterText = "";
+	$scope.searchText = "";
 })

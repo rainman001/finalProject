@@ -1,7 +1,7 @@
 var app = angular.module("myBookshelf", ["ngRoute", "imageupload", "ui.bootstrap.showErrors"]);
 
-app.config(function($routeProvider) {
-
+app.config(function($routeProvider, $httpProvider) {
+	// New stuff
 	$routeProvider
 	.when("/", {
 		templateUrl: "js/home/homeTmpl.html",
@@ -14,7 +14,7 @@ app.config(function($routeProvider) {
 	.when("/books/detail/:ISBN", {
 		templateUrl: "js/bookDetail/bookDetailTmpl.html",
 		controller: "bookDetailCtrl",
-		resolve: {
+		resolve: { // two resolve functions?
 			bookInfo: function(bookDetailService, $q, $route) {
 				var deferred = $q.defer();
 				bookDetailService.getSingleBook($route.current.params.ISBN).then(function(data) {

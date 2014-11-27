@@ -2,20 +2,24 @@
 
 <div ng-controller="homeCtrl" class="allContent">
 	<div class="container homeContent">
+		<!--
 		<p class="hoverClick" ng-click="goToItemsPage()">
 			LOAD BOOKSHELF <b class="glyphicon glyphicon-arrow-right"></b>
-		</p>
-		<!-- Fix this, set up user account, authentication, etc.cd dc -->
-		<form class="form-inline">
+		</p>-->
+		<div>
+			Welcome to MyBookshelf!
+		</div>
+		<!-- Refactor later to use angular in form and login functionality -->
+		<form class="form-inline" action="/login" method="post">
 			<div class="form-group">
-				<label class="sr-only" for="inputUsername">Username</label>
-				<input type="text" class="form-control" id="inputUsername" placeholder="Username" ng-model="username">
+				<label for="inputUsername">Username</label>
+				<input type="text" class="form-control" id="inputUsername" placeholder="Username" name="username">
 			</div>
 			<div class="form-group">
-				<label class="sr-only" for="inputPassword">Password</label>
-				<input type="text" class="form-control" id="inputPassword" placeholder="Password" ng-model="password">
+				<label for="inputPassword">Password</label>
+				<input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password"/>
 			</div>
-			<button type="button" class="btn btn-primary" ng-click="checkCredentials()">
+			<button type="submit" class="btn btn-primary">
 				Log In
 			</button> 
 			<button type="button" class="btn btn-link" ng-click="goToCreateAccount()">
@@ -24,3 +28,6 @@
 		</form>
 	</div>
 </div>
+
+<!--ng-click="logIn()"-->
+<!-- maybe add this back in, and when clicked, set variable on rootScope to save the username for passing to server -->

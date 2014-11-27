@@ -29,7 +29,10 @@ angular.module("myBookshelf").service("bookDetailService", function($http, $q) {
 	var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 	this.parseDate = function(date) {
-		var dateArray = date.split("-");
+		var dateArray = date.split("T");
+
+		var dateString = dateArray[0];
+		dateArray = dateString.split("-");
 
 		var day = dateArray[2];
 		var month = "";

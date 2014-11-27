@@ -1,14 +1,54 @@
 var express = require("express");
 var bodyParser = require("body-parser");
+var cookieParser = require("cookie-parser");
 var mongoose = require("mongoose");
+var session = require("express-session");
 
 var app = express();
-app.use(bodyParser.json({limit: 5000000}));
+
+
+// Configuring Passport
+var passport = require('passport'); 
+var LocalStrategy = require("passport-local").Strategy;
+
 // Serves up our files from public folder,
 // eliminated the need to run http-server
 app.use(express.static(__dirname + "/public"));
 
-mongoose.connect("mongodb://localhost/bookshelf");
+app.use(bodyParser.json({limit: 5000000}));
+app.use(bodyParser.urlencoded({extended: true})); 
+app.use(cookieParser());
+app.use(session({secret: "oi2j32389fjef32r320jr30jwer"}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(function(username, password, done) {
+    User.findOne({ username: username }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      // password validation method needed
+      if (!user.password) { /*validPassword(password)) {*/
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    });
+  }
+));
+
+// Put the id in the session
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+// Pull the id from the session
+// Test the findById later
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
 
 app.use(function(req, res, next) {
 	res.header('Access-Control-Allow-Origin', '*');
@@ -16,6 +56,8 @@ app.use(function(req, res, next) {
  	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
  	next();
 });
+
+mongoose.connect("mongodb://localhost/bookshelf");
 
 var currentUserInfo = {
 	loggedIn: false,
@@ -26,9 +68,9 @@ var currentUserInfo = {
 // MongoDB and Mongoose setup
 var userSchema = new mongoose.Schema({
 	username: String,
-	password: String,
-	//newstuff
-	bookCollection: [bookSchema]
+	password: String
+	// Maybe an array of references to book ISBN's?
+	//bookCollection: []
 });
 
 var User = mongoose.model("User", userSchema);
@@ -42,10 +84,8 @@ var bookSchema = new mongoose.Schema({
 	date_acquired: String, // Date
 	was_read: Boolean,
 	rating: Number,
-	// Redo in postman, with the properties added, and see if it will load to the browser
-	img: String,//{data: Buffer, contentType: String},
+	img: String,
 	comments: String
-	// current value, 
 });
 
 var Book = mongoose.model("Book", bookSchema);
@@ -69,6 +109,7 @@ app.get("/accounts/checkForUser/:username", function(req, res) {
 });
 
 //newstuff
+/*
 // Pass in a user object rather than passing info in params
 app.get("/accounts/logInUser/:username/:password", function(req, res) {
 	User.findOne({username: req.params.username}, function(err, user) {
@@ -92,9 +133,9 @@ app.get("/accounts/logInUser/:username/:password", function(req, res) {
 			res.send(false);
 		};
 	});
-});
+});*/
 
-//newStuff
+// Add a new user
 app.post("/accounts/addUser", function(req, res) {
 	console.log(req.body);
 	var newUser = new User({
@@ -104,10 +145,27 @@ app.post("/accounts/addUser", function(req, res) {
 
 	newUser.save();
 	res.status(200).end();
-})
+});
 
-
-
+// Log in route
+app.post('/login', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    if (err) { 
+    	return next(err) 
+    }
+    if (!user) {
+      req.session.messages =  [info.message];
+      return res.redirect('/')
+    }
+    req.logIn(user, function(err) {
+      if (err) { 
+      	return next(err); 
+      }
+      // Then allows the user to proceed to books page
+      return res.redirect('/#/books');
+    });
+  })(req, res, next);
+});
 
 
 app.get("/books", function(req, res) {
@@ -119,6 +177,27 @@ app.get("/books", function(req, res) {
 	});
 });
 
+// New version, for getting a user's books
+/*
+app.get("/books/:username", function(req, res) {
+	User.findOne({username: req.params.username}, function(err, user) {
+		if (err) {
+			return console.error(err);
+		}
+		var bookArray = [];
+		for (var i = 0; i < user.bookCollection.length; i++) {
+			Book.findOne({ISBN: user.bookCollection[i]}, function(err, book) {
+				if (err) {
+					return console.error(err);
+				}
+				bookArray.push(book);
+			})
+		}
+		res.send(bookArray);
+	})
+});
+*/
+
 
 app.get("/books/:ISBN", function(req, res) {
 	Book.findOne({ISBN: req.params.ISBN}, function(err, book) {
@@ -129,6 +208,8 @@ app.get("/books/:ISBN", function(req, res) {
 	});
 });
 
+
+// :username is new
 app.post("/books", function(req, res) {
 	var newBook = new Book({
 		title: req.body.title,
@@ -143,16 +224,22 @@ app.post("/books", function(req, res) {
 		comments: req.body.comments
 	});
 
-	//newBook.img.data = fs.readFileSync(req.body.img.data);
-	//newBook.img.contentType = req.body.img.contentType;
-
 	newBook.save();
 	res.status(200).end();
+
+	// New stuff
+	// Find user and then add ISBN to their collection
+	/*
+	User.findOne({username: req.params.username}, function(err, user) {
+		if (err) {
+			return console.error(err);
+		}
+		// Should add a new ISBN to the user's collection
+		user.bookCollection.push(newBook.ISBN);
+	})*/
 });
 
-
 app.put("/books/:ISBN", function(req, res) {
-	// Combine post and single get here
 	Book.findOne({ISBN: req.params.ISBN}, function(err, book) {
 		if (err) {
 			return console.error(err);

@@ -15,6 +15,7 @@
 	            <!-- Collect the nav links, forms, and other content for toggling -->
 	            <div class="collapse navbar-collapse" id="navigationCollapse">
 	                <ul class="nav navbar-nav">
+	                	<!--
 	                    <li class="dropdown">
 	                    	<a href="" data-toggle="dropdown" class="dropdown-toggle">Sort By<b class="caret"></b></a>
 	                    	<ul class="dropdown-menu">
@@ -26,7 +27,7 @@
 	                    	    <li><a href="" ng-click="predicate = 'rating'; reverse=!reverse">Rating</a></li>
 	                    	    <li><a href="" ng-click="predicate = ''">None</a></li>
 	                    	</ul>
-	                    </li>
+	                    </li>-->
 	                    <li><a href="/#/books/add-book">Add New Book</a></li>
 
 	                </ul>
@@ -34,10 +35,11 @@
 	        </div>
 	    </nav>
 	</div>
-	<div class="input-group">
-	    <input type="text" placeholder="Search For..." class="form-control" ng-model="searchText">
+	<div class="input-group resultsFilter">
+	    <input type="text" placeholder="Search By Title..." class="form-control" ng-model="searchText.title">
 	    <span class="input-group-btn">
-	    		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Filter On <span class="caret"></span></button>
+	    		<!-- Would allow user to choose what to filter by
+	    		<button type="button" class="btn btn-default dropdown-toggle buttonFormatting" data-toggle="dropdown">Filter On <span class="caret"></span></button>
 	    		    <ul class="dropdown-menu dropdown-menu-right" role="menu">
 	    		        <li><a href="" ng-click="filterText = ''">All</a></li>
 	    		        <li><a href="" ng-click="">Title</a></li>
@@ -46,26 +48,26 @@
 	    		        <li><a href="" ng-click="filterRating()">Rating</a></li>
 	    		        <li class="divider"></li>
 	    		        <li><a href="" ng-click="clearFilter()">Clear Filter</a></li>
-	    	        </ul>
-	    	<button class="btn btn-default" type="button" ng-click="predicate = ''">Clear Sort</button>
+	    	        </ul>-->
+	    	<button class="btn btn-default buttonFormatting" type="button" ng-click="predicate = ''">Clear Sort</button>
 	    </span>
 	</div>
 	<table class="customTable"> 
 		<tr>
 			<th class="showUnderline"><a href="" ng-click="predicate = 'title'; reverse=!reverse">Title</a></th>
 			<th class="showUnderline"><a href="" ng-click="predicate = 'author'; reverse=!reverse">Author</a></th>
-			<th class="showUnderline"><a href="" ng-click="predicate = 'date_published'; reverse=!reverse">Date Published</a></th>
-			<th class="showUnderline"><a href="" ng-click="predicate = 'date_acquired'; reverse=!reverse">Date Acquired</a></th>
+			<th class="showUnderline"><a href="" ng-click="predicate = 'date_published'; reverse=!reverse">Date Pub</a></th>
+			<th class="showUnderline"><a href="" ng-click="predicate = 'date_acquired'; reverse=!reverse">Date Acq</a></th>
 			<th class="showUnderline"><a href="" ng-click="predicate = 'was_read'; reverse=!reverse">Read</a></th>
 			<th class="showUnderline"><a href="" ng-click="predicate = 'Rating'; reverse=!reverse">Rating</a></th>
 		</tr>
 		<tr ng-repeat="book in books | filter: searchText | orderBy:predicate:reverse" ng-click="goToDetailView(book.ISBN)">
-			<td>{{book.title}}</td>
-			<td>{{book.author}}</td>
-			<td>{{book.date_published}}</td>
-			<td>{{book.date_acquired}}</td>
-			<td>{{book.was_read}}</td>
-			<td>{{book.rating}}</td>
+			<td class="customRow">{{book.title}}</td>
+			<td class="customRow">{{book.author}}</td>
+			<td class="customRow">{{book.date_published}}</td>
+			<td class="customRow">{{book.date_acquired}}</td>
+			<td class="customRow">{{book.was_read}}</td>
+			<td class="customRow">{{book.rating}}</td>
 		</tr>
 	</table>
 </div>

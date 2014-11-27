@@ -3,6 +3,10 @@ html, body {
 	margin: 0;
 }
 
+body {
+	background-color: #fecc5c;
+}
+
 .allContent {
 	width: 70%;
 	margin: 0 15%;
@@ -12,19 +16,24 @@ html, body {
 	display: flex;
 	margin-top: 1.5em;
 	margin-bottom: 1em;
-	border: 1px dashed black;
+	/*border: 1px solid #fd8d3c;*/
+	box-shadow: 2px 2px 5px #888888;
+	background: url(../images/Bookshelf.png);
+	background-size: 50% 100%;
+	background-repeat: repeat;
 }
 
 .headerLeft {
-	background-color: #858585;
+	/*background-color: #ffffb2;*/
 	width: 50%;
 	text-align: right;
 	font-size: 3em;
 	font-family: "Impact";
+	color: #fd8d3c;
 }
 
 .headerRight {
-	background-color: #858585;
+	/*background-color: #ffffb2;*/
 	width: 50%;
 	display: flex;
 	justify-content: flex-end;
@@ -53,7 +62,8 @@ html, body {
 .homeContent {
 	width: 100%;
 	min-height: 20em;
-	background-color: #E0EAEA;
+	background-color: #ffffb2;
+	/*border: 1px solid #fd8d3c;*/
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -73,6 +83,14 @@ html, body {
 .customTable {
 	width: 100%;
 	margin-top: 1.5em;
+	background-color: #ffffb2;
+	border: 1px solid #fd8d3c;
+}
+
+.customRow {
+	border: 1px solid #fd8d3c;
+	cursor: pointer;
+	padding: 0.5em;
 }
 
 .showUnderline {
@@ -81,8 +99,20 @@ html, body {
 
 .addBookForm {
 	width: 100%;
-	background-color: #0099CC;
+	background-color: #ffffb2;
 	padding: 0.5em;
+}
+
+.resultsFilter {
+	/*border: 1px solid #fd8d3c;*/
+}
+
+.navbar-default {
+	border-color: #fd8d3c;
+}
+
+.buttonFormatting:hover {
+	color: #e31a1c;
 }
 
 /*Styles for the detail view*/
@@ -90,7 +120,9 @@ html, body {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start;
-	border: 1px solid black;
+	/*border: 1px solid #fd8d3c;*/
+	background-color: #ffffb2;
+	box-shadow: 2px 2px 5px #888888;
 }
 
 .detailImage {
@@ -107,4 +139,8 @@ html, body {
 
 .inputSpacing {
 	margin-left: 1.25em;
+}
+
+.detailHeading {
+	color: #fd8d3c;
 }

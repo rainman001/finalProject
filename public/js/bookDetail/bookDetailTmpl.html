@@ -5,63 +5,63 @@
 		<div class="detailInfo">
 			<form class="form-horizontal">
 				<div class="form-group" showErrors>
-					<label for="inputTitle" class="control-label col-xs-2">Title</label>
+					<label for="inputTitle" class="control-label col-xs-2 detailHeading">Title</label>
 					<div class="col-xs-10">
 						<p class="form-control-static inputSpacing" ng-show="staticMode">{{currentBook.title}}</p>
 						<input type="text" class="form-control inputSpacing" id="inputTitle" ng-show="editMode" ng-model="title" required>
 					</div>
 				</div>
 				<div class="form-group" showErrors>
-					<label for="inputAuthor" class="control-label col-xs-2">Author</label>
+					<label for="inputAuthor" class="control-label col-xs-2 detailHeading">Author</label>
 					<div class="col-xs-10">
 						<p class="form-control-static inputSpacing" ng-show="staticMode">{{currentBook.author}}</p>
 						<input type="text" class="form-control inputSpacing" id="inputAuthor" ng-show="editMode" ng-model="author" required>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="ISBN" class="control-label col-xs-2">ISBN</label>
+					<label for="ISBN" class="control-label col-xs-2 detailHeading">ISBN</label>
 					<div class="col-xs-10">
 						<p class="form-control-static inputSpacing" ng-show="staticMode">{{currentBook.ISBN}}</p>
 						<input type="text" class="form-control inputSpacing" id="inputISBN" ng-show="editMode" ng-model="ISBN" readonly>
 					</div>
 				</div>
 				<div class="form-group" showErrors>
-					<label for="inputValue" class="control-label col-xs-2">Value</label>
+					<label for="inputValue" class="control-label col-xs-2 detailHeading">Value</label>
 					<div class="col-xs-10">
 						<p class="form-control-static inputSpacing" ng-show="staticMode">{{currentBook.value}}</p>
 						<input type="number" class="form-control inputSpacing" id="inputValue" ng-show="editMode" ng-model="value" required>
 					</div>
 				</div>
 				<div class="form-group" showErrors>
-					<label for="inputWasRead" class="control-label col-xs-2">Read</label>
+					<label for="inputWasRead" class="control-label col-xs-2 detailHeading">Read</label>
 					<div class="col-xs-10">
 						<p class="form-control-static inputSpacing" ng-show="staticMode">{{hasBeenRead}}</p>
 						<input type="text" class="form-control inputSpacing" id="inputWasRead" ng-show="editMode" ng-model="read" required>
 					</div>
 				</div>
 				<div class="form-group" showErrors>
-					<label for="inputDateAcquired" class="control-label col-xs-2">Acquired</label>
+					<label for="inputDateAcquired" class="control-label col-xs-2 detailHeading">Acquired</label>
 					<div class="col-xs-10">
 						<p class="form-control-static inputSpacing" ng-show="staticMode">{{readableDateAcquired}}</p>
 						<input type="date" max="{{theCurrentDate}}" class="form-control inputSpacing" id="inputDateAcquired" ng-show="editMode" ng-model="date_acquired" required>
 					</div>
 				</div>
 				<div class="form-group" showErrors>
-					<label for="inputDatePublished" class="control-label col-xs-2">Published</label>
+					<label for="inputDatePublished" class="control-label col-xs-2 detailHeading">Published</label>
 					<div class="col-xs-10">
 						<p class="form-control-static inputSpacing" ng-show="staticMode">{{readableDatePublished}}</p>
 						<input type="date" max="{{theCurrentDate}}" class="form-control inputSpacing" id="inputDatePublished" ng-show="editMode" ng-model="date_published" required>
 					</div>
 				</div>
 				<div class="form-group" showErrors>
-					<label for="inputRating" class="control-label col-xs-2">Rating</label>
+					<label for="inputRating" class="control-label col-xs-2 detailHeading">Rating</label>
 					<div class="col-xs-10">
 						<p class="form-control-static inputSpacing" ng-show="staticMode">{{currentBook.rating}}</p>
 						<input type="number" class="form-control inputSpacing" id="inputRating" ng-show="editMode" ng-model="rating" required>
 					</div>
 				</div>
 				<div class="form-group" showErrors>
-					<label for="inputComments" class="control-label col-xs-2">Comments</label>
+					<label for="inputComments" class="control-label col-xs-2 detailHeading">Comments</label>
 					<div class="col-xs-10">
 						<p class="form-control-static inputSpacing" ng-show="staticMode">{{currentBook.comments}}</p>
 						<input type="comments" class="form-control inputSpacing" id="inputComments" ng-show="editMode" ng-model="comments" required>
