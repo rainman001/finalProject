@@ -13,11 +13,11 @@ html, body {
 	margin-top: 1.5em;
 	margin-bottom: 1em;
 	border: 1px dashed black;
+	background-size: 50% 100%;
 }
 
 .headerLeft {
-	background-color: #858585;
-	width: 100%;
+	margin: 0 auto;
 	text-align: center;
 	font-size: 3em;
 	font-family: "Impact";
@@ -25,7 +25,6 @@ html, body {
 }
 
 .headerRight {
-	background-color: #858585;
 	width: 100%;
 	display: flex;
 	justify-content: center;

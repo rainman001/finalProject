@@ -1,22 +1,13 @@
-<!-- Need to add sorting filters, next page button, and add item options to top of results -->
-
 <div ng-controller="homeCtrl" class="allContent">
 	<div class="container homeContent">
-		<!--
-		<p class="hoverClick" ng-click="goToItemsPage()">
-			LOAD BOOKSHELF <b class="glyphicon glyphicon-arrow-right"></b>
-		</p>-->
-		<div>
-			Welcome to MyBookshelf!
-		</div>
 		<!-- Refactor later to use angular in form and login functionality -->
 		<form class="form-inline" action="/login" method="post">
 			<div class="form-group">
-				<label for="inputUsername">Username</label>
+				<label for="inputUsername" class="formText">Username:</label>
 				<input type="text" class="form-control" id="inputUsername" placeholder="Username" name="username">
 			</div>
 			<div class="form-group">
-				<label for="inputPassword">Password</label>
+				<label for="inputPassword" class="formText">Password:</label>
 				<input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password"/>
 			</div>
 			<button type="submit" class="btn btn-primary">
