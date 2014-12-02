@@ -22,63 +22,63 @@
 	<div class="addBookForm">
 		<form class="form-horizontal">
 			<div class="form-group" showErrors>
-				<label for="inputTitle" class="control-label col-xs-2">Title</label>
+				<label for="inputTitle" class="control-label col-xs-2 detailHeading">Title</label>
 				<div class="col-xs-10">
-					<input type="text" ng-model="title" placeholder="title" class="form-control" id="inputTitle" required/>
+					<input type="text" ng-model="title" class="form-control" id="inputTitle" required/>
 				</div>
 			</div>
 			<div class="form-group" showErrors>
-				<label for="inputAuthor" class="control-label col-xs-2">Author</label>
+				<label for="inputAuthor" class="control-label col-xs-2 detailHeading">Author</label>
 				<div class="col-xs-10">
-					<input type="text" ng-model="author" placeholder="author" class="form-control" id="inputAuthor" required/>
+					<input type="text" ng-model="author" class="form-control" id="inputAuthor" required/>
 				</div>
 			</div>
 			<div class="form-group" showErrors>
-				<label for="inputISBN" class="control-label col-xs-2">ISBN</label>
+				<label for="inputISBN" class="control-label col-xs-2 detailHeading">ISBN</label>
 				<div class="col-xs-10">
-					<input type="text" ng-model="ISBN" placeholder="ISBN" class="form-control" id="inputISBN" required />
+					<input type="text" ng-model="ISBN" class="form-control" id="inputISBN" required />
 				</div>
 			</div>
 			<div class="form-group" showErrors>
-				<label for="inputValue" class="control-label col-xs-2">Value</label>
+				<label for="inputValue" class="control-label col-xs-2 detailHeading">Value</label>
 				<div class="col-xs-10">
-					<input type="number" ng-model="value" placeholder="value" class="form-control" id="inputValue" required />
+					<input type="number" ng-model="value" class="form-control" id="inputValue" required />
 				</div>
 			</div>
 			<div class="form-group" showErrors>
-				<label for="inputDatePublished" class="control-label col-xs-2">Published</label>
+				<label for="inputDatePublished" class="control-label col-xs-2 detailHeading">Published</label>
 				<div class="col-xs-10">
 					<input type="date" max="{{theCurrentDate}}" ng-model="date_published" class="form-control" id="inputDatePublished" required />
 				</div>
 			</div>	
 			<div class="form-group" showErrors>
-				<label for="inputDateAcquired" class="control-label col-xs-2">Acquired</label>
+				<label for="inputDateAcquired" class="control-label col-xs-2 detailHeading">Acquired</label>
 				<div class="col-xs-10">
 					<input type="date" max="{{theCurrentDate}}" ng-model="date_acquired" class="form-control" id="inputDateAcquired" required/>
 				</div>
 			</div>
 			<div class="form-group" showErrors>
-				<label for="inputWasRead" class="control-label col-xs-2">Read</label>
+				<label for="inputWasRead" class="control-label col-xs-2 detailHeading">Read</label>
 				<div class="col-xs-10">
-					<input type="text" ng-model="was_read" placeholder="was_read" class="form-control" id="inputWasRead" required />
+					<input type="text" ng-model="was_read" class="form-control" id="inputWasRead" required />
 				</div>
 			</div>		
 			<div class="form-group" showErrors>
-				<label for="inputRating" class="control-label col-xs-2">Rating</label>
+				<label for="inputRating" class="control-label col-xs-2 detailHeading">Rating</label>
 				<div class="col-xs-10">
-					<input type="number" min="1" max="10" step="1" ng-model="rating" placeholder="rating" class="form-control" id="inputRating" required />
+					<input type="number" min="1" max="10" step="1" ng-model="rating" class="form-control" id="inputRating" required />
 				</div>
 			</div>		
 			<div class="form-group" showErrors>
-				<label for="inputImage" class="control-label col-xs-2">Image</label>
+				<label for="inputImage" class="control-label col-xs-2 detailHeading">Image</label>
 				<div class="col-xs-10">
-					<input type="file" accept="image/*" image="image" placeholder="img url" class="form-control" id="inputImage" required /><!--<img ng-src="{{image.dataURL}}" />-->
+					<input type="file" accept="image/*" image="image" class="form-control" id="inputImage" required /><!--<img ng-src="{{image.dataURL}}" />-->
 				</div>
 			</div>
 			<div class="form-group" showErrors>
-				<label for="inputComments" class="control-label col-xs-2">Comments</label>
+				<label for="inputComments" class="control-label col-xs-2 detailHeading">Comments</label>
 				<div class="col-xs-10">
-					<input type="text" ng-model="comments" placeholder="comments" class="form-control" id="inputComments" required />
+					<input type="text" ng-model="comments" class="form-control" id="inputComments" required />
 				</div>
 			</div>
 			<div class="form-group">

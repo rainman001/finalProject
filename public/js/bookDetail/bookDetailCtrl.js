@@ -23,8 +23,8 @@ angular.module("myBookshelf").controller("bookDetailCtrl", function($scope, $loc
 		$scope.ISBN = $scope.currentBook.ISBN;
 		$scope.value = $scope.currentBook.value;
 		$scope.read = $scope.currentBook.was_read;
-		$scope.date_acquired = $scope.currentBook.date_acquired;
-		$scope.date_published = $scope.currentBook.date_published;
+		$scope.date_acquired = bookDetailService.formatDate($scope.readableDateAcquired);
+		$scope.date_published = bookDetailService.formatDate($scope.readableDatePublished);
 		$scope.rating = $scope.currentBook.rating;
 		$scope.comments = $scope.currentBook.comments;
 	};

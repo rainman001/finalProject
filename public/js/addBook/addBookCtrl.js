@@ -24,6 +24,9 @@ angular.module("myBookshelf").controller("addBookCtrl", function($scope, addBook
 
 		var myBook = new Book($scope.title, $scope.author, $scope.ISBN, $scope.value, $scope.date_published, $scope.date_acquired, $scope.was_read, $scope.rating, $scope.image.dataURL, $scope.comments);
 
+		console.log($scope.date_acquired);
+		console.log($scope.date_published);
+
 		addBookService.addBook(myBook).then(function() {
 			$location.path("/books");
 		});

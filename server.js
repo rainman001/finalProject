@@ -80,8 +80,8 @@ var bookSchema = new mongoose.Schema({
 	author: String,
 	ISBN: String,
 	value: Number,
-	date_published: String, // Date
-	date_acquired: String, // Date
+	date_published: Date, // Date
+	date_acquired: Date, // Date
 	was_read: Boolean,
 	rating: Number,
 	img: String,

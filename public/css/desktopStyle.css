@@ -112,7 +112,9 @@ body {
 
 .addBookForm {
 	width: 100%;
-	background-color: #ffffb2;
+	background-color: #003300;
+	border: 2px solid red;
+	margin: 1.5em 0 3em 0;
 	padding: 0.5em;
 }
 
@@ -147,7 +149,11 @@ body {
 .inputSpacing {
 	margin-left: 1.25em;
 	color: #FFFFCC;
+}
 
+.parSpacing {
+	margin-left: 1.25em;
+	color: black;
 }
 
 .detailHeading {

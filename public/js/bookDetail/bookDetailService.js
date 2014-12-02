@@ -29,9 +29,17 @@ angular.module("myBookshelf").service("bookDetailService", function($http, $q) {
 	var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 	this.parseDate = function(date) {
+
+		var dateString = "";
+
+		if (date === undefined) {
+			dateString = "January 1, 2001";
+			return dateString;
+		}
+
 		var dateArray = date.split("T");
 
-		var dateString = dateArray[0];
+		dateString = dateArray[0];
 		dateArray = dateString.split("-");
 
 		var day = dateArray[2];
@@ -41,9 +49,15 @@ angular.module("myBookshelf").service("bookDetailService", function($http, $q) {
 		var monthAsInt = parseInt(dateArray[1]);
 		month = monthNames[monthAsInt - 1];
 
-		var dateString = month + " " + day + ", " + year;
+		var finalDateString = month + " " + day + ", " + year;
 
-		return dateString;
+		return finalDateString;
+	};
+
+	this.formatDate = function(date) {
+		var asDate = new Date(date);
+
+		return asDate;
 	};
 
 	this.parseWasRead = function(wasRead) {

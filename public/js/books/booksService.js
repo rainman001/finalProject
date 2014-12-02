@@ -1,4 +1,4 @@
-angular.module("myBookshelf").service("booksService", function($http) {
+angular.module("myBookshelf").service("booksService", function($http, bookDetailService) {
 
 	var baseUrl = "http://localhost:9001";
 
@@ -11,6 +11,7 @@ angular.module("myBookshelf").service("booksService", function($http) {
 
 	this.formatDates = function(books) {
 		for (var i = 0; i < books.length; i++) {
+
 			var dateArray = books[i].date_acquired.split("T");
 			var dateString = dateArray[0];
 			dateArray = dateString.split("-");
