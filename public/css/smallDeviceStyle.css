@@ -47,4 +47,8 @@ html, body {
 	font-size: 1.25em;
 }
 
+.detailSummary {
+	flex-wrap: wrap;
+}
+
 

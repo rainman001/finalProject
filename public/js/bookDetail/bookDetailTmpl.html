@@ -1,5 +1,10 @@
 <!-- We don't use ng-controller here because we are loading it using a resolve in app.js -->
 <div class="allContent">
+	<div>
+		<button type="button" class="btn btn-link" ng-click="backToResults()">
+			Back to results
+		</button>
+	</div>
 	<div class="detailSummary">
 		<img class="detailImage" ng-src="{{currentBook.img}}" type="{{image.file.type}}" />
 		<div class="detailInfo">

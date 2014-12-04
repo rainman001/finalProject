@@ -49,5 +49,7 @@ html, body {
 /* For detail view */
 .detailSummary {
 	justify-content: center;
+	flex-wrap: wrap;
 }
+
 

@@ -63,4 +63,8 @@ angular.module("myBookshelf").controller("bookDetailCtrl", function($scope, $loc
 		}
 	};
 
+	$scope.backToResults = function() {
+		$location.path("/books");
+	};
+
 })
